@@ -24,7 +24,7 @@ ToolShare is a web application for managing tool rentals. Whether you’re a DIY
 
 
 ## API Endpoints
-##Tools
+## Tools
 - GET /api/tools: Retrieve all tools.
 - POST /api/tools: Add a new tool (admin only).
 - PUT /api/tools/:id: Update an existing tool (admin only).
