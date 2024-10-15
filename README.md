@@ -11,8 +11,7 @@ ToolShare is a web application for managing tool rentals. Whether you’re a DIY
 
 ## Installation
 1. clone the repo:
-   git clone [https://github.com/your-username/ToolShare.git](https://github.com/e5m41l/ToolShare-Tool-Rental-Service](https://github.com/e5m41l/ToolShare-Tool-Rental-Service.git)
-   cd ToolShare
+   git clone https://github.com/e5m41l/ToolShare-Tool-Rental-Service.git
 2. Install dependencies:
    npm install
 3. Set up environment variables: Create a .env file in the project root and add the following variables:
