@@ -1,52 +1,7 @@
-const mongoose = require('mongoose');
+const { Tool, validate } = require('../models/tool');
 const express = require('express');
 const router = express.Router();
-const Joi = require('joi');
 
-const Tool = mongoose.model("Tool", new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 100,
-    },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true,
-    },
-    brand: String,
-    description: String,
-    rentalRate: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    availability: {
-      type: Boolean,
-      default: true,
-    },
-    condition: {
-      type: String,
-      enum: ['New', 'Excellent', 'Good', 'Fair', 'Poor'],
-      default: 'Good',
-    },
-    imageUrl: String,
-    addedDate: {
-      type: Date,
-      default: Date.now,
-    },
-    rating: {
-      type: Number,
-      min: 1,
-      max: 5,
-      default: 3,
-    },
-    rentedTimes: {
-      type: Number,
-      default: 0,
-    },
-}));
 
 
 // get all available tools - GET request 
@@ -74,7 +29,7 @@ router.get('/:id', async (req, res)=>{
 router.post('/', async (req, res)=>{
 
     // validate data
-    const { error } = validatetool(req.body);
+    const { error } = validate(req.body);
 
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -94,7 +49,7 @@ router.post('/', async (req, res)=>{
 // update existing tool - PUT request
 router.put('/:id', async (req, res)=>{
     // validate data
-    const { error } = validatetool(req.body);
+    const { error } = validate(req.body);
 
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -128,13 +83,4 @@ router.delete('/:id', async (req, res)=>{
     res.send(tool);
 });
 
-function validatetool (tool) {
-
-    const schema = {
-        name : Joi.string().min(3).max(50).required(),
-        description: Joi.string().max(255)
-    };
-
-    return Joi.validate(schema, tool);
-}
 module.exports = router;
