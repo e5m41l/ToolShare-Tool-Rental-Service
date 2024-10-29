@@ -15,7 +15,7 @@ ToolShare is a web application for managing tool rentals. Whether you’re a DIY
 2. Install dependencies:
    npm install
 3. Set up environment variables: Create a .env file in the project root and add the following variables:
-   PORT=3000
+   PORT=7000
    <!-- MONGODB_URI=your_mongodb_uri -->
    <!-- JWT_PRIVATE_KEY=your_jwt_key -->
 4. Run the application:
